@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Book A Call</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js"></script>
+</head>
+<body>
+    <div class="page">
+        <div class="box">
+            <form action="" id="form" onsubmit="sConsole(event)">
+                <h2 style="color: #ffa500;text-align: center;">Book A Call</h2>
+                <p style="text-align: center;">Book a call slotand our representative will call you within the selected time.</p>
+                <label for="name">Name:</label><br>
+                <input type="text" name="name" id="name"/><br><br>
+                <label for="email">Email:</label><br>
+                <input type="text" name="email" id="email"/><br><br>
+                <label for="phone">Phone:</label><br>
+                <input type="text" name="phone" id="phone"/><br><br>
+                <label for="time">Time For Call:</label><br>
+                <input type="date" name="date" id="date"/>
+                <input type="time" name="time" id="time"/><br><br>
+                <button type="submit" class="registerbtn"><strong>Get A Call</strong></button>
+            </form>
+        </div>
+        <!-- <div>
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div> -->
+    </div>
+    <script>
+        function sConsole(event) {
+            event.preventDefault();
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var phone = document.getElementById("phone").value;
+            var date = document.getElementById("date").value;
+            var time= document.getElementById("time").value;
+            // console.log(name.value);
+            // console.log(email.value);
+            // console.log(phone.value);
+            // console.log(date.value);
+            // console.log(time.value);
+
+            const obj ={
+                name,
+                email,
+                phone,
+                date,
+                time
+            }
+
+            axios.post("https://crudcrud.com/api/f426a5a8e180439b9c0d38a3dd7da4f1/appointmentDate", obj)
+                .then(response => {
+                    console.log(response);
+                })
+                .catch(err => console.error());
+            
+        }
+    </script>
+    <style>
+        .registerbtn {
+            font-size: 20px;
+            color: #f9f9f9;
+            background-color: #ffa500;
+            border: 1px solid;
+            width: 100%;
+            }
+    body {
+            background-image: url('bg.jpg');
+            background-repeat:no-repeat;
+            background-size:cover;
+        }
+    .box{
+        margin:0 auto; 
+        width:40%; 
+        padding:20px;
+        background:#f9f9f9;
+        border:2px solid #ffa500;}
+    </style>
+</body>
+
+</html>
